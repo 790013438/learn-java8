@@ -7,8 +7,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
+        <groupId>io.github.floyd</groupId>
         <artifactId>learn-java8</artifactId>
-        <groupId>io.github.790013438</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 

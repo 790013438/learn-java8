@@ -1,32 +1,15 @@
-package io.github.floyd.java8.lambda;
+package io.github.floyd.java8.lambda.demo;
 
 import io.github.floyd.java8.lambda.domain.Project;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class FilterProjects {
-
-    public static List<Project> filterJavaProjects(List<Project> projects) {
-        List<Project> result = new ArrayList<>();
-        for (Project project : projects) {
-            if ("java".equals(project.getLanguage())) {
-                result.add(project);
-            }
-        }
-        return result;
-    }
-
-    public static List<Project> filterLanguageProjects(List<Project> projects, String language) {
-        List<Project> result = new ArrayList<>();
-        for (Project project : projects) {
-            if (language.equals(project.getLanguage())) {
-                result.add(project);
-            }
-        }
-        return result;
-    }
+/**
+ * @author floyd
+ */
+public class Lambdas {
 
     private static List<Project> buildData() {
         List<Project> data = new ArrayList<>();
@@ -80,28 +63,23 @@ public class FilterProjects {
     }
 
     public static void main(String[] args) {
-        List<Project> data = buildData();
-
-        List<Project> filter = filter(data, project -> project.getStars() > 1000);
-        List<String> names = getNames();
-        System.out.println(filter);
+        List<Project> projects = buildData();
+        List<String> names = getNames(projects);
+        names.stream()
+                .map(s -> s + " ")
+                .collect(Collectors.toList())
+                .forEach(System.out::print);
+        System.out.println();
+        for (String name : names) {
+            System.out.println(name);
+        }
     }
 
-    public static List<String> getNames(List<Project> projects) {
+    private static List<String> getNames(List<Project> projects) {
         List<String> names = new ArrayList<>();
         for (Project project : projects) {
-            names.add(project.getNames());
+            names.add(project.getName());
         }
         return names;
-    }
-
-    private static <T> List<T> filter(List<T> list, Predicate<T> predicate) {
-        List<T> result = new ArrayList<>();
-        for (T t : list) {
-            if (predicate.test(t)) {
-                result.add(t);
-            }
-        }
-        return result;
     }
 }
