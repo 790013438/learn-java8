@@ -6,14 +6,15 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.790013438</groupId>
+    <groupId>io.github.floyd</groupId>
     <artifactId>learn-java8</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <modules>
+    <!-- <modules>
         <module>java8-lambda</module>
     </modules>
+    -->
 
     <dependencies>
         <dependency>

@@ -29,6 +29,10 @@ public class FilterProjects {
     }
 
     private static List<Project> buildData() {
+        return getProjects();
+    }
+
+    public static List<Project> getProjects() {
         List<Project> data = new ArrayList<>();
 
         data.add(Project
@@ -80,17 +84,30 @@ public class FilterProjects {
     }
 
     public static void main(String[] args) {
-        List<Project> data = buildData();
+        List<Project> projects = buildData();
 
-        List<Project> filter = filter(data, project -> project.getStars() > 1000);
-        List<String> names = getNames();
+        List<Project> filter = filter(projects, project -> project.getStars() > 1000);
+        List<String> names = getNames(projects);
+        names.forEach(System.out::println);
+        names = getNames(projects, project -> project.getStars() > 1000);
+        names.forEach(System.out::println);
         System.out.println(filter);
     }
 
-    public static List<String> getNames(List<Project> projects) {
+    private static List<String> getNames(List<Project> projects) {
         List<String> names = new ArrayList<>();
         for (Project project : projects) {
-            names.add(project.getNames());
+            names.add(project.getName());
+        }
+        return names;
+    }
+
+    private static List<String> getNames(List<Project> projects, Predicate<Project> predicate) {
+        List<String> names = new ArrayList<>();
+        for(Project project : projects) {
+            if (predicate.test(project)) {
+                names.add(project.getName());
+            }
         }
         return names;
     }
