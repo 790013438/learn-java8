@@ -99,10 +99,16 @@ public class FilterProjects {
         names.forEach(System.out::println);
         System.out.println();
 
-        names = getNames(projects,
+        names = getFields(projects,
                 project -> project.getStars() > 1000,
                 Project::getDescription);
         names.forEach(System.out::println);
+        System.out.println();
+
+        List<Integer> stars = getFields(projects,
+                project -> project.getStars() > 1000,
+                ProjectFunction.buildStarFunction());
+        System.out.println(stars);
     }
 
     private static List<String> getNames(List<Project> projects) {
@@ -123,9 +129,9 @@ public class FilterProjects {
         return names;
     }
 
-    private static <R> List<R> getNames(List<Project> projects,
-                                        Predicate<Project> predicate,
-                                        Function<Project, R> function) {
+    private static <R> List<R> getFields(List<Project> projects,
+                                         Predicate<Project> predicate,
+                                         Function<Project, R> function) {
         List<R> names = new ArrayList<>();
         for (Project project : projects) {
             if (predicate.test(project)) {
@@ -143,5 +149,12 @@ public class FilterProjects {
             }
         }
         return result;
+    }
+}
+
+interface ProjectFunction<R> extends Function<Project, R> {
+
+    static ProjectFunction<Integer> buildStarFunction() {
+        return Project::getStars;
     }
 }
