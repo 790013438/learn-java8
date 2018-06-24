@@ -4,6 +4,7 @@ import io.github.floyd.java8.lambda.domain.Project;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class FilterProjects {
@@ -50,7 +51,7 @@ public class FilterProjects {
                 .language("java")
                 .author("biezhi")
                 .stars(2600)
-                .description("")
+                .description("Best beautiful java blog, worth a try")
                 .build());
 
         data.add(Project
@@ -87,11 +88,21 @@ public class FilterProjects {
         List<Project> projects = buildData();
 
         List<Project> filter = filter(projects, project -> project.getStars() > 1000);
+        System.out.println(filter);
+        System.out.println();
+
         List<String> names = getNames(projects);
         names.forEach(System.out::println);
+        System.out.println();
+
         names = getNames(projects, project -> project.getStars() > 1000);
         names.forEach(System.out::println);
-        System.out.println(filter);
+        System.out.println();
+
+        names = getNames(projects,
+                project -> project.getStars() > 1000,
+                Project::getDescription);
+        names.forEach(System.out::println);
     }
 
     private static List<String> getNames(List<Project> projects) {
@@ -104,9 +115,21 @@ public class FilterProjects {
 
     private static List<String> getNames(List<Project> projects, Predicate<Project> predicate) {
         List<String> names = new ArrayList<>();
-        for(Project project : projects) {
+        for (Project project : projects) {
             if (predicate.test(project)) {
                 names.add(project.getName());
+            }
+        }
+        return names;
+    }
+
+    private static <R> List<R> getNames(List<Project> projects,
+                                        Predicate<Project> predicate,
+                                        Function<Project, R> function) {
+        List<R> names = new ArrayList<>();
+        for (Project project : projects) {
+            if (predicate.test(project)) {
+                names.add(function.apply(project));
             }
         }
         return names;
