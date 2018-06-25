@@ -3,6 +3,7 @@ package io.github.floyd.java8.lambda;
 import io.github.floyd.java8.lambda.domain.Project;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -109,6 +110,9 @@ public class FilterProjects {
                 project -> project.getStars() > 1000,
                 ProjectFunction.buildStarFunction());
         System.out.println(stars);
+
+        projects.sort(Comparator.comparing(Project::getStars));
+        System.out.println(projects);
     }
 
     private static List<String> getNames(List<Project> projects) {
