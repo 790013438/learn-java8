@@ -13,4 +13,8 @@ public interface Calculator {
     default int mod(int first, int second) {
         return first % second;
     }
+
+    static Calculator getInstance() {
+        return new BasicCalculator();
+    }
 }

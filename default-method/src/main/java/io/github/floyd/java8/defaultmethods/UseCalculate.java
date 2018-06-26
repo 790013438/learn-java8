@@ -7,7 +7,7 @@ public class UseCalculate {
         int sum = calculator.add(1, 2);
         System.out.println(sum);
 
-        Calculator cal = CalculatorFactory.getInstance();
+        Calculator cal = Calculator.getInstance();
         int difference = cal.subtract(3, 2);
         System.out.println(difference);
 
