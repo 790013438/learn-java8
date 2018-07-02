@@ -1,5 +1,6 @@
 package io.github.floyd.java8.optional;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -1,4 +1,4 @@
-package .io.github.floyd.java8.optional;
+package io.github.floyd.java8.optional;
 
 public class BeforeJava8 {
 

@@ -10,5 +10,6 @@ public class User {
     private String userName;
     private String password;
     private Integer age;
-    private Adress adress;
+    private Address address;
+    private Optional<Address> optAddress;
 }
