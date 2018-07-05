@@ -65,15 +65,28 @@ public class OptionalDemo {
         System.out.println(present);
 
         /* 抛出异常 */
-        user.setOptAddress(Optional.empty());
-        Address address1 = null;
-        try {
-            address1 = user.getOptAddress()
-                .filter(address -> address.getDoor().contains("878"))
-                .orElseThrow((Supplier<Throwable>) () -> new Exception("挂了"));
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-        System.out.println(address1);
+//        user.setOptAddress(Optional.empty());
+//        Address address1 = null;
+//        try {
+//            address1 = user.getOptAddress()
+//                    .filter(address -> address.getDoor().contains("878"))
+//                    .orElseThrow((Supplier<Throwable>) () -> new Exception("挂了"));
+//        } catch (Throwable throwable) {
+//            throwable.printStackTrace();
+//        }
+//        System.out.println(address1);
+
+        test();
+    }
+
+    private static void test() {
+        Optional<User> optionalUser = Optional.of(User
+                .of(
+                        "古天乐",
+                        12,
+                        Optional.of(new Address("倪家桥", "5-1-2402"))));
+        System.out.println(User.getStreet(optionalUser, 1));
+        System.out.println(User.getStreet(optionalUser, 12));
+        System.out.println(User.getStreet(optionalUser, 13));
     }
 }
