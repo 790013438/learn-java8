@@ -77,6 +77,7 @@ public class OptionalDemo {
 //        System.out.println(address1);
 
         test();
+        System.out.println(getStreet());
     }
 
     private static void test() {
@@ -88,5 +89,20 @@ public class OptionalDemo {
         System.out.println(User.getStreet(optionalUser, 1));
         System.out.println(User.getStreet(optionalUser, 12));
         System.out.println(User.getStreet(optionalUser, 13));
+    }
+
+    public static String getStreet(Optional<User> user, int minAge) {
+        return user.filter(u -> u.getAge() >= minAge)
+            .flatMap(User::getOptAddress)
+            .map(Address::getStreet)
+            .orElse("没有");
+    }
+
+    public static Optional<Integer> parseInt(String value) {
+        try {
+            return Optional.ofNullable(Integer.parseInt(value);
+        } catch(Exception e) {
+            return Optional.empty();
+        }
     }
 }
