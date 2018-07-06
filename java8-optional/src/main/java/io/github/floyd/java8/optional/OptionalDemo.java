@@ -105,4 +105,12 @@ public class OptionalDemo {
             return Optional.empty();
         }
     }
+
+    public int readPoint(Properties pros, String name) {
+        return Optional.ofNullable(props.getProperty(name))
+            .flatMap(OptionalDemo::parseInt)
+            .filter(i -> i > 0)
+            .orElse(0);
+
+    }
 }
