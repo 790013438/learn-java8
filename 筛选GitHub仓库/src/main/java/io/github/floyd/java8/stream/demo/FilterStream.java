@@ -18,6 +18,7 @@ public class FilterStream {
 
         Stream<Integer> numbers = Stream.of(1, 2, 3, 3, 2, 4);
         numbers.distinct()
+            .limit(3)
             .forEach(System.out::println);
     }
 
