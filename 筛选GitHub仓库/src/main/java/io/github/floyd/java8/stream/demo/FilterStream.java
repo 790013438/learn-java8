@@ -20,6 +20,10 @@ public class FilterStream {
         numbers.distinct()
             .limit(3)
             .forEach(System.out::println);
+
+        System.out.println("============");
+        Stream.of(1, 2, 3, 3, 2, 4).skip(3)
+            .forEach(System.out::println);
     }
 
 }
