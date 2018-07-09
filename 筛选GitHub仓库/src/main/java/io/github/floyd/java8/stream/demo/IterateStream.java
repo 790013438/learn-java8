@@ -27,6 +27,13 @@ public class IterateStream {
                 .limit(20)
                 .collect(Collectors.toList());
         System.out.println(itemList);
+
+        Stream.iterate(new Tuple(0, 1),
+                tuple ->
+                new Tuple(tuple.second, tuple.first + tuple.second))
+            .limit(20)
+            .forEach(tuple -> System.out.println("(" + tuple.first + ", "
+                        + tuple.second + ")"));
     }
 
     @AllArgsConstructor
@@ -55,4 +62,11 @@ public class IterateStream {
             return "{" + first + ", " + second + "}";
         }
     }
+
+    @AllArgsConstructor
+    static class Tuple {
+        int first;
+        int second;
+    }
+
 }
