@@ -58,10 +58,26 @@ public class Square {
                 .forEach(System.out::print);
     }
 
+    private static void q3() {
+        List<Integer> numbers1 = Arrays.asList(1, 2, 3);
+        List<Integer> numbers2 = Arrays.asList(3, 4);
+
+        List<int[]> pairs = numbers1.stream()
+            .flatMap(i -> numbers2.stream()
+                    .filter(j -> (i + j) % 3 == 0)
+                    .map(j -> new int[]{i, j}))
+            .collect(Collectors.toList());
+
+        pairs.stream()
+                .map(Arrays::toString)
+                .forEach(System.out::print);
+    }
+
     public static void main(String[] args) {
         q1();
         q2();
         q2FlatMap();
+        q3();
     }
 
 }
