@@ -2,6 +2,7 @@ package io.github.floyd.java8.stream.demo;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 2
@@ -26,8 +27,41 @@ public class Square {
             .forEach(System.out::println);
     }
 
+    private static void q2() {
+        List<Integer> number1 = Arrays.asList(1, 2, 3);
+        List<Integer> number2 = Arrays.asList(3, 4);
+        List<Integer[]> list = number1.stream()
+            .flatMap(i -> {
+                return number2.stream()
+                    .map(j -> {
+                        return new Integer[]{i, j};
+                    });
+            })
+        .collect(Collectors.toList());
+        list.stream()
+                .map(Arrays::toString)
+                .forEach(System.out::println);
+    }
+
+    private static void q2FlatMap() {
+        List<Integer> number1 = Arrays.asList(1, 2, 3);
+        List<Integer> number2 = Arrays.asList(3, 4);
+
+        List<int[]> pairs = number1.stream()
+            .flatMap(i ->
+                    number2.stream()
+                    .map(j -> new int[]{i, j}))
+            .collect(Collectors.toList());
+
+        pairs.stream()
+                .map(Arrays::toString)
+                .forEach(System.out::print);
+    }
+
     public static void main(String[] args) {
         q1();
+        q2();
+        q2FlatMap();
     }
 
 }
