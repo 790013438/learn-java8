@@ -12,7 +12,7 @@ public class CountReduce {
         List<Project> projects = FilterProjects.getProjects();
         Integer biezhi = projects.stream()
             .filter(p -> p.getAuthor().equals("biezhi"))
-            .map(p -> p.getStars())
+            .map(Project::getStars)
             .reduce(0, Integer::sum);
         System.out.println(biezhi);
     }
