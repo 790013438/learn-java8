@@ -15,26 +15,17 @@ public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-        File[] hiddenFiles = new File(".").listFiles(new FileFilter() {
-            @Override
-            public boolean accept(File file) {
-                return file.isHidden();
-            }
-        });
-        Arrays.stream(hiddenFiles)
-                .forEach(System.out::println);
+        File[] hiddenFiles = new File(".").listFiles(File::isHidden);
+        Arrays.stream(hiddenFiles != null ? hiddenFiles : new File[0])
+                .map(File::toString)
+                .forEach(logger::debug);
 
         recursive(new File("."));
     }
 
     private static void recursive (File file) {
         if (file.isDirectory()) {
-            File[] hiddenFiles = file.listFiles(new FileFilter() {
-                @Override
-                public boolean accept(File pathname) {
-                    return pathname.isHidden();
-                }
-            });
+            File[] hiddenFiles = file.listFiles(File::isHidden);
             Arrays.stream(hiddenFiles != null ? hiddenFiles : new File[0])
                     .forEach(e -> {
                         if (e.isDirectory()) {
