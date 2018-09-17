@@ -2,13 +2,13 @@ package io.github.floyd.java8.collect;
 
 import io.github.floyd.java8.lambda.FilterProjects;
 import io.github.floyd.java8.lambda.domain.Project;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.counting;
 
 /**
  * 1. 计数
@@ -40,17 +40,25 @@ import static java.util.stream.Collectors.counting;
  */
 public class Counting {
 
+    private static final Logger logger = LoggerFactory.getLogger(Counting.class);
+    private static final String SEPARATOR = "====================";
+
     public static void main(String[] args) {
         List<Project> projects = FilterProjects.getProjects();
         Long collect = projects.stream()
                 .filter(project -> project.getStars() > 300).collect(Collectors.counting());
-        System.out.println(collect);
-        System.out.println("====================");
+        logger.debug("收藏数大于300的项目{}", collect);
+        logger.debug(SEPARATOR);
 
         Optional<Project> optSort = projects.stream()
             .collect(Collectors.maxBy(Comparator.comparingInt(Project::getStars)));
-        System.out.println(optSort);
-        System.out.println("====================");
+        logger.debug("收藏数最多的项目{}", optSort.orElse(Project.builder().name("unnamed").build()));
+        logger.debug(SEPARATOR);
 
+        // 求和
+        int i = projects.stream()
+            .collect(Collectors.summingInt(Project::getStars));
+        logger.debug("收藏数之和{}", i);
+        logger.debug(SEPARATOR);
     }
 }
