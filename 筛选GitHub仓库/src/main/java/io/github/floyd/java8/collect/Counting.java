@@ -78,5 +78,12 @@ public class Counting {
             .collect(Collectors.reducing(0, Project::getStars, (x, y) -> x + y));
         logger.debug("用reduce求和{}", sum);
         logger.debug(SEPARATOR);
+
+        // 另外一种累加操作
+        Optional<Integer> sumCollect = projects.stream()
+            .map(Project::getStars)
+            .collect(Collectors.reducing((x, y) -> x + y));
+        logger.debug("第二种用reduce求和{}", sumCollect);
+        logger.debug(SEPARATOR);
     }
 }
