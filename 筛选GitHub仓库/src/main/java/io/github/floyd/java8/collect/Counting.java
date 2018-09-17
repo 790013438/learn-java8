@@ -4,7 +4,6 @@ import io.github.floyd.java8.lambda.FilterProjects;
 import io.github.floyd.java8.lambda.domain.Project;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -60,5 +59,12 @@ public class Counting {
             .collect(Collectors.summingInt(Project::getStars));
         logger.debug("收藏数之和{}", i);
         logger.debug(SEPARATOR);
+
+        // 4. 求平均值
+        double average = projects.stream()
+            .collect(Collectors.averagingDouble(Project::getStars));
+        logger.debug("收藏数平均值{}", average);
+        logger.debug(SEPARATOR);
+
     }
 }
