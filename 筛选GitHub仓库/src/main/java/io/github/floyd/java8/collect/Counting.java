@@ -72,5 +72,11 @@ public class Counting {
             .collect(Collectors.joining(", "));
         logger.debug("连接字符串{}", str);
         logger.debug(SEPARATOR);
+
+        // 6. 一般归约
+        int sum = projects.stream()
+            .collect(Collectors.reducing(0, Project::getStars, (x, y) -> x + y));
+        logger.debug("用reduce求和{}", sum);
+        logger.debug(SEPARATOR);
     }
 }
