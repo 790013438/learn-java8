@@ -78,7 +78,7 @@ public class FilterProjects {
                 .name("Elves")
                 .language("java")
                 .author("biezhi")
-                .stars(200)
+                .stars(199)
                 .description("Spider")
                 .build());
 

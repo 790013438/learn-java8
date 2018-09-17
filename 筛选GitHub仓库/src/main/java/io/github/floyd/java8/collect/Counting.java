@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 1. 计数
@@ -66,5 +67,10 @@ public class Counting {
         logger.debug("收藏数平均值{}", average);
         logger.debug(SEPARATOR);
 
+        // 5. 连接字符串
+        String str = Stream.of("Hello", "Java8")
+            .collect(Collectors.joining(", "));
+        logger.debug("连接字符串{}", str);
+        logger.debug(SEPARATOR);
     }
 }
