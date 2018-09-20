@@ -25,8 +25,12 @@ public class FilteringApples {
         List<Apple> heavyApples = inventory.stream()
             .filter((Apple a) -> a.getWeight() > 150)
             .collect(toList());
-
         logger.debug("heavy apples {}", heavyApples);
+
+        List<Apple> heavyApples2 = inventory.parallelStream()
+            .filter((Apple a) -> a.getWeight() > 150)
+            .collect(toList());
+        logger.debug("heavy apples {}", heavyApples2);
     }
 
     public static class Apple {
