@@ -37,6 +37,8 @@ public class FilteringApples {
 
         // 打印苹果重量
         prettyPrintApple(inventory, apple -> "苹果重量：" + apple.getWeight().toString());
+        // 书上版本
+        prettyPrintApple(inventory, apple -> "An apple of " + apple.getWeight() + "g");
 
         // 打印每个苹果并提及是重还是轻
         prettyPrintApple(inventory, apple -> {
@@ -45,6 +47,12 @@ public class FilteringApples {
                 return "重苹果 :" + apple.toString();
             }
             return apple.toString();
+        });
+        // 书上版本
+        prettyPrintApple(inventory, apple -> {
+            String characteristic = apple.getWeight() > 150 ? "heavy" : "light";
+            return "A " + characteristic +
+              " " + apple.getColor() + " apple";
         });
     }
 
