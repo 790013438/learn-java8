@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -26,9 +27,16 @@ public class Group {
     public static void main(String[] args) {
         List<Project> projects = FilterProjects.getProjects();
 
-        Map<String, Integer> map = projects.stream()
+        // 得到所有名字和start数
+        Map<String, Integer> map0 = projects.stream()
             .collect(Collectors.toMap(Project::getName, Project::getStars));
-        logger.debug("得到map{}", map);
+        logger.debug("得到map{}", map0);
+        logger.debug(SEPARATOR);
+
+        // 名字对应的整个project类
+        Map<String, Project> map1 = projects.stream()
+            .collect(Collectors.toMap(Project::getName, Function.identity()));
+        logger.debug("得到map, key 对应整个项目{}", map1);
         logger.debug(SEPARATOR);
     }
 }
