@@ -38,5 +38,12 @@ public class Group {
             .collect(Collectors.toMap(Project::getName, Function.identity()));
         logger.debug("得到map, key 对应整个项目{}", map1);
         logger.debug(SEPARATOR);
+
+        // 分组
+        Map<String, List<Project>> map2 = projects.stream()
+            .collect(Collectors.groupingBy(Project::getAuthor));
+        logger.debug("得到map, 分组{}", map2);
+        logger.debug(SEPARATOR);
     }
+
 }
