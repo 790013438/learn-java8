@@ -49,7 +49,7 @@ public class FilterProjects {
         data.add(Project
                 .builder()
                 .name("Tale")
-                .language("java")
+                .language("js")
                 .author("biezhi")
                 .stars(2600)
                 .description("Best beautiful java blog, worth a try")
