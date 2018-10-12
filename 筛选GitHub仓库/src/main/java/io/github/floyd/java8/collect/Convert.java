@@ -5,8 +5,13 @@ import io.github.floyd.java8.lambda.domain.Project;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -38,5 +43,10 @@ public class Convert {
                 .collect(Collectors.toCollection(HashSet::new));
 
         logger.debug("set {}", projectHashSet);
+
+        // 分组，再求每个组最多的
+        Map<String, Project> stringProjectMap = projects.stream()
+                .collect(Collectors.toMap(Project::getAuthor, Function.identity(), BinaryOperator.maxBy(Comparator.comparingInt(Project::getStars))));
+        logger.debug("分组，每组最多 {}", stringProjectMap);
     }
 }
