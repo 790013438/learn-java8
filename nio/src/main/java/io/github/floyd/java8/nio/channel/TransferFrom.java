@@ -25,14 +25,21 @@ public class TransferFrom {
         // 查找jar的旁边有没有文件
         CodeSource codeSource = TransferFrom.class.getProtectionDomain().getCodeSource();
         String location = codeSource.getLocation().getFile();
+        LOGGER.debug("jar或class所在的路径{}", location);
         File srcFile = new File(location, FILE);
 
 
         // 写入copy.txt
         String toFileString = "copy.txt";
         try (ReadableByteChannel readableByteChannel = readableByteChannelFunction.apply(srcFile);
-             // 要写入的文件
-             FileChannel fileChannel = new RandomAccessFile(toFileString, "rw").getChannel()) {
+             // 要写入的文件, 位置在执行命令窗口所在的位置
+             FileChannel fileChannel = new RandomAccessFile(toFileString, "rw").getChannel();
+             // 比较使用简便的方式，放在jar旁边
+             FileChannel transferFileChannel = new RandomAccessFile(new File(location, "nio-data.md"), "rw").getChannel()) {
+
+            // 使用简单的
+            transferFileChannel.transferFrom(readableByteChannel, 0, srcFile.length());
+
             // 缓存大小
             ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
             // 读取文件内容到缓存
