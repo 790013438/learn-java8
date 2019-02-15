@@ -41,18 +41,6 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <mainClass>io.github.floyd.java8.nio.channel.TransferFrom</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
 </project>
