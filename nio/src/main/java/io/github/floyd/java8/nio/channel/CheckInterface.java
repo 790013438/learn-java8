@@ -13,4 +13,12 @@ public interface CheckInterface {
      * 消费信息
      */
     void print();
+
+    /**
+     * 提供消息
+     * @return 随意的一段
+     */
+    default String supply() {
+        return "Great Wall";
+    }
 }

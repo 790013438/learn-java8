@@ -22,6 +22,16 @@ public class CheckImpl implements CheckInterface {
         LOGGER.debug("hello");
     }
 
+/*    *//**
+     * 提供消息
+     *
+     * @return 随意的一段
+     *//*
+    @Override
+    public String supply() {
+        return "vim";
+    }*/
+
     public Logger getLogger() {
         return LOGGER;
     }

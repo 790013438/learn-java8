@@ -10,7 +10,8 @@ package io.github.floyd.java8.nio.channel;
  */
 public class Checkout {
     public static void main(String[] args) {
-        Check2Impl check2 = new Check2Impl();
+        CheckInterface check2 = new Check2Impl();
         check2.print();
+        ((Check2Impl) check2).getLogger().debug(check2.supply());
     }
 }
