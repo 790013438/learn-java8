@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 public class ReflectRepository {
     private static final Logger LOGGER = LoggerFactory.getLogger(ReflectRepository.class);
 
-    public void haHa(Supplier<String> stringSupplier) {
+    void haHa(Supplier<String> stringSupplier) {
         LOGGER.debug(stringSupplier.get());
     }
 
@@ -40,7 +40,7 @@ public class ReflectRepository {
     }
 
     public static void main(String... args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = Class.forName("io.github.floyd.java8.nio.overload.ReflectRepository").getMethod("haHa", Supplier.class);
+        Method method = Class.forName("io.github.floyd.java8.nio.overload.ReflectRepository").getDeclaredMethod("haHa", Supplier.class);
         method.invoke(new ReflectRepository(), (Supplier<String>) () -> "根据接口调用");
 
         Method method1 = Class.forName("io.github.floyd.java8.nio.overload.ReflectRepository").getMethod("haHa", io.github.floyd.java8.nio.overload.ReflectRepository.StringSupplier.class);
