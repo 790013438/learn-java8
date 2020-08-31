@@ -4,6 +4,7 @@ import io.github.floyd.java8.nio.channel.Check2Impl;
 import io.github.floyd.java8.nio.channel.CheckImpl;
 import io.github.floyd.java8.nio.channel.CheckInterface;
 
+import java.util.HashMap;
 import java.util.function.Function;
 
 /**
@@ -22,19 +23,8 @@ import java.util.function.Function;
  */
 public class TestMain {
     public static void main(String...args) {
-        // compose 处理一下，返回apply需要处理的东西
-        Function a = ((Function<CheckImpl, String>) CheckInterface::supply).compose((CheckImpl b) -> b);
-        System.out.println(a.compose(new Function<CheckImpl, CheckImpl>(){
-            /**
-             * Applies this function to the given argument.
-             *
-             * @param check the function argument
-             * @return the function result
-             */
-            @Override
-            public CheckImpl apply(CheckImpl check) {
-                return check;
-            }
-        }).apply(new Check2Impl()));
+        GenericInMethod genericInMethod = new GenericInMethod();
+        System.out.println(genericInMethod.apply("a"));
     }
+
 }

@@ -17,6 +17,7 @@ public class Checkout {
         CheckInterface check2 = new Check2Impl();
         check2.print();
         ((Check2Impl) check2).getLogger().debug(check2.supply());
+        Class t = Check2Impl.class;
         Class reflectClazz = Class.forName("io.github.floyd.java8.nio.overload.ReflectRepository");
         Method method = reflectClazz.getDeclaredMethod("haHa", java.util.function.Supplier.class);
         method.setAccessible(true);
