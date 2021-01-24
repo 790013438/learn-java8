@@ -19,7 +19,7 @@ import java.util.function.Function;
  * Company: com.yinhai
  * date 2019/5/14
  * @ProjectName a01Component
- * @see *#
+
  */
 public class TestMain {
     public static void main(String...args) {

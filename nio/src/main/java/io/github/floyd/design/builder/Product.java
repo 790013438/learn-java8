@@ -14,7 +14,7 @@ import java.util.List;
  * ClassName io.github.floyd.java8
  * Company: com.yinhai
  * date 2020/8/27
- * @see *#
+
  */
 public class Product {
     List<String> parts = new ArrayList<>();

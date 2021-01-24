@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-class ReverseWordsInaStringIII {
+public class ReverseWordsInaStringIII {
     public String reverseWords(String s) {
         char[] a = s.toCharArray();
         for (int i = 0; i < a.length; ++i) {

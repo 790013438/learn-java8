@@ -1,4 +1,7 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;  //只能使用最高1.8版本JDK提供的API
+import java.util.stream.IntStream;
 
 
 /**
@@ -55,7 +58,7 @@ public class Template { //类名不可修改!!!
 	 * 可修改，验证自己的答案
 	 * @param args
 	 */
-	public static void main(String[] args){
+	public static void main(String[] args) throws ParseException {
 		// 用于自己校验结果
 		Template template = new Template();
 		long startTime = System.currentTimeMillis();
@@ -80,6 +83,15 @@ public class Template { //类名不可修改!!!
 		long endTime = System.currentTimeMillis();
 		System.out.println("耗时(毫秒)：" + (endTime - startTime));
 
+        List<Integer> aae002Ke27 = new LinkedList<Integer>(){{add(3);add(4);add(5);}};
+		List<Integer> aae002Ke27k2 = new LinkedList<Integer>(){{add(1);add(2);add(3);add(4);add(5);}};
+		aae002Ke27k2.retainAll(aae002Ke27);
+		System.out.println(aae002Ke27);
 
+		System.out.println(Arrays.toString(IntStream.range(0, 3).toArray()));
+		System.out.println("2020-10-22 00:00:00至".replaceAll("^([0-9- :]+).*", "$1"));
+		System.out.println("2020-10-22 00:00:00至2020-12-01 00:00:00".replaceAll("^([0-9- :]+).*", "$1"));
+		SimpleDateFormat smf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println(smf.parse("2020-10-22 00:00:00"));
 	}
 }

@@ -12,7 +12,7 @@ package io.github.floyd.java8.generic;
  * Company: com.yinhai
  * date 2019/5/14
  * @ProjectName a01Component
- * @see *#
+
  */
 public class GenericInMethod {
     public <T extends String> String apply(T a) {

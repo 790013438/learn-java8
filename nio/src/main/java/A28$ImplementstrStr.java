@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
  * ClassName PACKAGE_NAME
  * Company: com.yinhai
  * date 2020/6/16
- * @see *#
+
  */
 public class A28$ImplementstrStr {
     public int strStr(String haystack, String needle) {

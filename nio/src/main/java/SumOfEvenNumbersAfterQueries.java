@@ -16,7 +16,7 @@ import java.util.List;
  * ClassName PACKAGE_NAME
  * Company: com.yinhai
  * date 2020/8/31
- * @see *#
+
  */
 public class SumOfEvenNumbersAfterQueries {
     public static int[] stringToIntegerArray(String input) {
@@ -91,15 +91,20 @@ public class SumOfEvenNumbersAfterQueries {
             }
         }
         for (int i = 0; i < queries.length; ++i) {
-            int temp = A[queries[i][1]] + queries[i][0];
+            int query = A[queries[i][1]];
+            int temp = query + queries[i][0];
             if (temp % 2 == 0) {
-                evenSum += queries[i][0];
+                if (query % 2 == 0) {
+                    evenSum += queries[i][0];
+                } else {
+                    evenSum += query + queries[i][0];
+                }
             } else {
                 evenSum -= A[queries[i][1]];
             }
             A[queries[i][1]] = temp;
 
-            res[queries[i][1]] = evenSum;
+            res[i] = evenSum;
         }
         return res;
     }

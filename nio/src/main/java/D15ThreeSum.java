@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * ClassName PACKAGE_NAME
  * Company: com.yinhai
  * date 2020/5/29
- * @see *#
+
  */
 public class D15ThreeSum {
     private static String integerArrayListToString(List<Integer> nums, int length) {
