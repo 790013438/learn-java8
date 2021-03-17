@@ -76,7 +76,7 @@ public class HeightChecker {
         }
         int li = 0, i = 1;
         int res = 0;
-        for (; i < heights.length && li < heights.length - 1; ) {
+        while (i < heights.length && li < heights.length - 1) {
             while (i < heights.length && heights[li] <= heights[i]) {
                 i++;
             }

@@ -47,10 +47,10 @@ public class DuplicateZeros {
             return "[]";
         }
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for(int index = 0; index < length; index++) {
             int number = nums[index];
-            result += Integer.toString(number) + ", ";
+            result.append(number).append(", ");
         }
         return "[" + result.substring(0, result.length() - 2) + "]";
     }

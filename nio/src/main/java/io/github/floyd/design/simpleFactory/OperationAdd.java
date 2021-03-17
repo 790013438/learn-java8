@@ -20,7 +20,7 @@ public class OperationAdd extends Operation {
      * @return 返回计算结果
      */
     @Override
-    double getResult() {
+    public double getResult() {
         double res = 0;
         res = getNumberA() + getNumberB();
         return res;

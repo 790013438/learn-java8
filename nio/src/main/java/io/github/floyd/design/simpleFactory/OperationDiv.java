@@ -20,7 +20,7 @@ public class OperationDiv extends Operation {
      * @return 返回计算结果
      */
     @Override
-    double getResult() {
+    public double getResult() {
         double res = 0;
         if (getNumberB() == 0) {
             throw new RuntimeException("除数不能为0");

@@ -21,7 +21,7 @@ public abstract class Operation {
      * 计算
      * @return 返回计算结果
      */
-    abstract double getResult();
+    public abstract double getResult();
 
     public double getNumberA() {
         return numberA;

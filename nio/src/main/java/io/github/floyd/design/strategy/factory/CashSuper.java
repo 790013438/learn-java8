@@ -18,8 +18,8 @@ import java.math.BigDecimal;
 public abstract class CashSuper {
     /**
      * 商场促销打折类
-     * @param money
-     * @return
+     * @param money 金额
+     * @return 计算后打折的金额
      */
     public abstract BigDecimal acceptCash(BigDecimal money);
 }
